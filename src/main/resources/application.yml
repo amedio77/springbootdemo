@@ -1,0 +1,47 @@
+spring:
+  profiles:
+    active: dev # 기본 환경 선택
+
+---
+spring:
+  profiles: local
+  application:
+    name: deparmentservice
+  datasource:
+    hikari:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      jdbc-url: jdbc:mysql://192.168.64.5:31000/test?useSSL=false
+      username: inina
+      password: paswd
+  logging:
+    level:
+      root: warn
+      com.crossent.services.departmentservice: info
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 50MB
+file:
+  upload-dir: /Users/amedio/md/
+
+---
+spring:
+  profiles: dev
+  application:
+    name: deparmentservice
+  datasource:
+    hikari:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      jdbc-url: jdbc:mysql://${MYSQL_URL}/${MYSQL_DATABASE}?useSSL=false
+      username: ${MYSQL_USER}
+      password: ${MYSQL_PASSWORD}
+  logging:
+    level:
+      root: warn
+      com.crossent.services.departmentservice: info
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 50MB
+file:
+  upload-dir: /usr/apps/uploads/

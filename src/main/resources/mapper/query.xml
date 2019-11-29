@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd">
+
+<mapper namespace="com.crossent.services.departmentservice.api">
+    <select id="selectName" resultType="map">
+        SELECT name,test FROM pytest
+    </select>
+
+    <select id="selectNameWherer" parameterType="map"  resultType="string">
+        SELECT name FROM pytest where name=#{name}
+    </select>
+
+    <insert id="insertName" parameterType="map" >
+        INSERT INTO pytest(name,test)VALUES(#{name},#{test})
+    </insert>
+
+    <update id="updateName" parameterType="map" >
+        UPDATE pytest set test=#{test} where name=#{name}
+    </update>
+
+    <delete id="deleteName" parameterType="map" >
+        DELETE FROM pytest where name=#{name}
+    </delete>
+
+</mapper>
